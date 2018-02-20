@@ -1,4 +1,6 @@
 /* finding 2*min(l,r)+2*min(u,d)
+
+http://codeforces.com/problemset/problem/888/B
 */
 
 
