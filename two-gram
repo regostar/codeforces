@@ -1,0 +1,55 @@
+/* http://codeforces.com/contest/977/problem/B
+
+Two-gram is an ordered pair (i.e. string of length two) of capital Latin letters. For example, "AZ", "AA", "ZA" — three distinct two-grams.
+
+You are given a string 
+s
+ consisting of 
+n
+ capital Latin letters. Your task is to find any two-gram contained in the given string as a substring (i.e. two consecutive characters of the string) maximal number of times. For example, for string 
+s
+ = "BBAABBBA" the answer is two-gram "BB", which contained in 
+s
+ three times. In other words, find any most frequent two-gram.
+
+Note that occurrences of the two-gram can overlap with each other.
+
+Input
+The first line of the input contains integer number 
+n(2≤n≤100) — the length of string s. The second line of the input contains the string s consisting of n
+ capital Latin letters.
+
+Output
+Print the only line containing exactly two capital Latin letters — any two-gram contained in the given string 
+s
+ as a substring (i.e. two consecutive characters of the string) maximal number of times.
+ 
+ */
+ #include <iostream>
+#include <map>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    int length;
+    string S;
+    cin >> length >> S;
+
+    map <string, int> frequency;
+    int max_frequency = 0;
+    string answer;
+
+    for(int i = 0; i + 1 < length; i++)
+    {
+        string two_gram = S.substr(i, 2);
+        frequency[two_gram]++;
+
+        if(frequency[two_gram] > max_frequency)
+            max_frequency = frequency[two_gram], answer = two_gram;
+    }
+
+    cout << answer;
+    return 0;
+}
